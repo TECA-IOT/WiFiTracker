@@ -278,18 +278,32 @@ ahora solo nos falta obtener una key para poder usar el api. Copiamos la clave y
 ```
 * <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/cURL_censurado.png" width="400">
 ## visualizar:
-reemplazamos las coordenadas en esta url de google maps y copiamos las coordenadas en el webbrowser: https://www.google.com/maps/@-12.0847800,-77.0475100,16z
+* reemplazamos las coordenadas en esta url de google maps y copiamos las coordenadas en el webbrowser: https://www.google.com/maps/@-12.0847800,-77.0475100,16z
 * <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/visualizar.png" width="400">
 
 ## LowPower:
 * ahora, si quiero poner este tracker en un gato debe ser ligero y la batería durar mucho tiempo por la tanto hay que mejorar el diseño del hardware hay que retirar del wemos: el chip USB, los dos transistores que se usar para programar y el regulador de voltaje para reemplazarlo por uno de mayor calidad (LDO).
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/modificaciones.jpg" width="400">
 * Agregue un pulsador al gpio1 para poder re-programar el modulo de ser necesario.
 * Agregar un condensador de 100uF entre gnd y 3.3v
-* pegar un modulo sobre el otro y conectar los pines entre si
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957280.jpg" width="400">
+* pegar un modulo sobre el otro de modo que los pines queden uno frnete al otro y conectar los pines entre si
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957275.jpg" width="400">
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957271.jpg" width="400">
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957262.jpg" width="400">
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957248.jpg" width="400">
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957241.jpg" width="400">
 * prepara un LDO de 3.3v con sus condensadores y una batería recargable
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957262.jpg" width="400">
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957214.jpg" width="400">
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957200.jpg" width="400">
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957192.jpg" width="400">
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957192.jpg" width="400">
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957188.jpg" width="400">
 * si necesitamos reprogramarlo podemos soldar cables en tx, rx y gnd. Y mantener el pulsador presionado durante la programacion.
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957179.jpg" width="400">
 
-##paso experto.
+## paso experto:
 * Crear un middleware con python y django e integrar con traccar.
 * Les dejo la parte relevante del codigo como ejemplo
 * <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/middleware.png" width="400">
