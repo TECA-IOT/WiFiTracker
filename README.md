@@ -239,7 +239,7 @@ existen varios servicios de este tipo como el de mozilla, here.com, google maps,
 
 ### crear proyecto
 * crearemos un proyecto nuevo
-* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/crear_proyecto.png.jpg" width="400">
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/crear_proyecto.png" width="400">
 * <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/dashboard.png" width="400">
 
 ### habilitar billing  https://console.cloud.google.com/billing
