@@ -4,9 +4,8 @@ wifi mac google geolocalization api sigfox low power django traccar
 * en este proyecto intento crear un pequeño rastreador para mascotas (mi gato) usando un servicio de geolocalizacion basado en estaciones de wifi. Para esto use un modulo ESP8266 para leer las direcciones mac de las redes wifi cercanas al rastreador y las envio a Internet por medio de un modulo sigfox (Tinyfox). Con estas mac hice query al api de Google maps para obtener las coordenadas GPS de mi rastreador/gato/mascota y finalmente las visualice en google maps.
 * Con esto ya funcionando correctamente escribí un servidor en Django y lo instale en un VPS a modo de middleware para recibir los mensajes de sigfox y solicitar las coordenadas a Google. Como paso final reenvió estas coordenadas a una instancia de traccar ejecutante en el mismo VPS.
 
+<img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957188.jpg" width="400"> <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/traccar.png" width="400">
 
-
-<insertar todos de portada aquí>
 ### materiales:
 * esp8266. En este caso usare un wemos d1
 * un tinyfox (radio sigfox)
