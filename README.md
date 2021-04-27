@@ -1,36 +1,35 @@
 # WiFiTracker
 wifi mac google geolocalization api sigfox low power django traccar
 
-WiFi Tracker
-en este proyecto intento crear un pequeño rastreador para mascotas (mi gato) usando un servicio de geolocalizacion basado en estaciones de wifi. Para esto use un modulo ESP8266 para leer las direcciones mac de las redes wifi cercanas al rastreador y las envio a Internet por medio de un modulo sigfox (Tinyfox). Con estas mac hice query al api de Google maps para obtener las coordenadas GPS de mi rastreador/gato/mascota y finalmente las visualice en google maps.
-Con esto ya funcionando correctamente escribí un servidor en Django y lo instale en un VPS a modo de middleware para recibir los mensajes de sigfox y solicitar las coordenadas a Google.
-Como paso final reenvió estas coordenadas a una instancia de traccar ejecutante en el mismo VPS.
+*en este proyecto intento crear un pequeño rastreador para mascotas (mi gato) usando un servicio de geolocalizacion basado en estaciones de wifi. Para esto use un modulo ESP8266 para leer las direcciones mac de las redes wifi cercanas al rastreador y las envio a Internet por medio de un modulo sigfox (Tinyfox). Con estas mac hice query al api de Google maps para obtener las coordenadas GPS de mi rastreador/gato/mascota y finalmente las visualice en google maps.
+Con esto ya funcionando correctamente escribí un servidor en Django y lo instale en un VPS a modo de middleware para recibir los mensajes de sigfox y solicitar las coordenadas a Google. Como paso final reenvió estas coordenadas a una instancia de traccar ejecutante en el mismo VPS.
 
 
 
 <insertar todos de portada aquí>
-materiales:
-	esp8266. En este caso usare un wemos d1
-	un tinyfox (radio sigfox)
-	powerbank
-	regulador LDO de 3.3v (opcional)
-	batería de litio pequeña (opcional)
-<foto de los materiales>
-servicios:
-	cuenta activa de sigfox
-	servicio de geolocalizacion wifi se sigfox (opcional. Si tu servicio incluye esta funcion.)
-	cuenta de Google cloud con billing habilitado (puedes habilitar con una tarjeta de crédito y obtener 30 días gratis)
-software:
-	arduino IDE
-	postman o cURL
+### materiales:
+* esp8266. En este caso usare un wemos d1
+* un tinyfox (radio sigfox)
+* powerbank
+* regulador LDO de 3.3v (opcional)
+* batería de litio pequeña (opcional)
+* <foto de los materiales>
+### servicios:
+* cuenta activa de sigfox
+* servicio de geolocalizacion wifi se sigfox (opcional. Si tu servicio incluye esta funcion.)
+* cuenta de Google cloud con billing habilitado (puedes habilitar con una tarjeta de crédito y obtener 30 días gratis)
 
-ensamblado:
-	conectar el tinyfix al ESP8266: Rx-D7   Tx-D6   Rst-D5  gnd y 3.3v a sus respectivos pines.
-	Habilitar el auto-reset para poder usar el modo DeepSleep. Hacer un puente entre el reset y el D0 del esp8266
-	opcionalmente agregar una batería conectada  a gnd y 5v. No conectar el cable USB y la batería al mismo tiempo!
-<insertar fotos del ensamblado>
-Programación:
-	conectamos el modulo a la PC y descargamos el siguiente scketch.
+### software:
+* arduino IDE
+* postman o cURL
+
+### ensamblado:
+* conectar el tinyfix al ESP8266: Rx-D7   Tx-D6   Rst-D5  gnd y 3.3v a sus respectivos pines.
+* Habilitar el auto-reset para poder usar el modo DeepSleep. Hacer un puente entre el reset y el D0 del esp8266
+* opcionalmente agregar una batería conectada  a gnd y 5v. No conectar el cable USB y la batería al mismo tiempo!
+* <insertar fotos del ensamblado>
+### Programación:
+* conectamos el modulo a la PC y descargamos el siguiente scketch.
   
 ```javascript
 #include "ESP8266WiFi.h"
@@ -218,35 +217,35 @@ boolean validSSID(int i) { //descarta las redes provenientes de un telefono o ro
 
 ```
 
-backend sigfox:
-una ves que el modulo esta transmitiendo podemos ir al backend de sigfox y ver los mensajes.
-como podemos ver el mensaje “88de7c109d806032b150b67e” representa a las dos mac mas cercanas, es decir “88:de:7c:10:9d:80” y “60:32:b1:50:b6:7e”.
-el siguiente paso sera usar un servicio en linea para obtener las coordenadas de esas redes wifi
+### backend sigfox:
+* una ves que el modulo esta transmitiendo podemos ir al backend de sigfox y ver los mensajes.
+* como podemos ver el mensaje “88de7c109d806032b150b67e” representa a las dos mac mas cercanas, es decir “88:de:7c:10:9d:80” y “60:32:b1:50:b6:7e”.
+* el siguiente paso sera usar un servicio en linea para obtener las coordenadas de esas redes wifi
 
 existen varios servicios de este tipo como el de mozilla, here.com, google maps, etc. en este caso usare google.
 
-google maps api:
-https://developers.google.com/maps/documentation/geolocation/get-api-key?authuser=1
-en este enlace encontraremos información detallada del api de google maps de geolocalizacion basada en redes wifi y en torres de telefonía celular. Para hacer suo de esta API seguiremos los pasos:
+### google maps api:
+* https://developers.google.com/maps/documentation/geolocation/get-api-key?authuser=1
+* en este enlace encontraremos información detallada del api de google maps de geolocalizacion basada en redes wifi y en torres de telefonía celular. Para hacer suo de esta API seguiremos los pasos:
 
-	crear cuenta
-https://console.cloud.google.com/home/dashboard
+crear cuenta
+* https://console.cloud.google.com/home/dashboard
 crearemos una cuenta de google cloud
-	crear proyecto
+* crear proyecto
 crearemos un proyecto nuevo
 <foto>
 
-	habilitar billing  https://console.cloud.google.com/billing
+* habilitar billing  https://console.cloud.google.com/billing
 debemos habilitar la facturacion obligatoriamente para usar esa api. Necesitamos ingresar datos de una tarjeta de credito activa y obtendremos unos dias gratis suficientes para realizar pruebas.
 <foto>
-	habilitar el geolocation api. https://console.cloud.google.com/apis/library/geolocation.googleapis.com 
+* habilitar el geolocation api. https://console.cloud.google.com/apis/library/geolocation.googleapis.com 
 buscamos la api de geolocalizacion y la habilitamos en nuestro proyecto.
 
-	Finalmente obtener el KEY https://console.cloud.google.com/apis/credentials 
+* Finalmente obtener el KEY https://console.cloud.google.com/apis/credentials 
 ahora solo nos falta obtener una key para poder usar el api. Copiamos la clave y la usaremos para resolver las coordenaas.
 
-solicitar coordenadas con curl:
-	guardamos las macs en un archivo con el siguiente formato
+### solicitar coordenadas con curl:
+* guardamos las macs en un archivo con el siguiente formato
 ```javascript
 {
   "considerIp": false,
@@ -261,10 +260,9 @@ solicitar coordenadas con curl:
 }
 ```
 
-con el nombre macs.json
-ejecutamos un postman o con cURL
+* con el nombre macs.json ejecutamos un postman o con cURL
 $ curl -d @macs.json -H "Content-Type: application/json" -i "https://www.googleapis.com/geolocation/v1/geolocate?key=YOUR_API_KEY"
-y recibimos el resultado:
+* y recibimos el resultado:
 ```javascript
 {
   "location": {
@@ -274,22 +272,21 @@ y recibimos el resultado:
   "accuracy": 150
 }
 ```
-visualizar:
+## visualizar:
 reemplazamos las coordenadas en esta url de google maps y copiamos las coordenadas en el webbrowser: https://www.google.com/maps/@-12.0847800,-77.0475100,16z
 <insertrar captura de pantalla>
 
-LowPower:
-	ahora, si quiero poner este tracker en un gato debe ser ligero y la batería durar mucho tiempo por la tanto hay que mejorar el diseño del hardware
-	hay que retirar del wemos: el chip USB, los dos transistores que se usar para programar y el regulador de voltaje para reemplazarlo por uno de mayor calidad (LDO).
-	Agregue un pulsador al gpio1 para poder re-programar el modulo de ser necesario.
-	Agregar un condensador de 100uF entre gnd y 3.3v
-	pegar un modulo sobre el otro y conectar los pines entre si
-	prepara un LDO de 3.3v con sus condensadores y una batería recargable
-	si necesitamos reprogramarlo podemos soldar cables en tx, rx y gnd. Y mantener el pulsador presionado durante la programacion.
+## LowPower:
+* ahora, si quiero poner este tracker en un gato debe ser ligero y la batería durar mucho tiempo por la tanto hay que mejorar el diseño del hardware hay que retirar del wemos: el chip USB, los dos transistores que se usar para programar y el regulador de voltaje para reemplazarlo por uno de mayor calidad (LDO).
+* Agregue un pulsador al gpio1 para poder re-programar el modulo de ser necesario.
+* Agregar un condensador de 100uF entre gnd y 3.3v
+* pegar un modulo sobre el otro y conectar los pines entre si
+* prepara un LDO de 3.3v con sus condensadores y una batería recargable
+* si necesitamos reprogramarlo podemos soldar cables en tx, rx y gnd. Y mantener el pulsador presionado durante la programacion.
 
-paso experto.
-	Crear un middleware con python y django e integrar con traccar.
-	Les dejo la parte relevante del codigo como ejemplo
-	<middleware.png>
-	resultado
-	<traccar.png>
+##paso experto.
+* Crear un middleware con python y django e integrar con traccar.
+* Les dejo la parte relevante del codigo como ejemplo
+* <middleware.png>
+* resultado
+* <traccar.png>
