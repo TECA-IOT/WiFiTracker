@@ -30,6 +30,7 @@ wifi mac google geolocalization api sigfox low power django traccar
 * opcionalmente agregar una batería conectada  a gnd y 5v. No conectar el cable USB y la batería al mismo tiempo!
 * <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957148.jpg" width="400">
 * <insertar fotos del ensamblado>
+
 ### Programación:
 * conectamos el modulo a la PC y descargamos el siguiente scketch.
 * <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957152.jpg" width="400">
@@ -228,27 +229,35 @@ boolean validSSID(int i) { //descarta las redes provenientes de un telefono o ro
 
 existen varios servicios de este tipo como el de mozilla, here.com, google maps, etc. en este caso usare google.
 
-### google maps api:
+## google maps api:
 * https://developers.google.com/maps/documentation/geolocation/get-api-key?authuser=1
-* en este enlace encontraremos información detallada del api de google maps de geolocalizacion basada en redes wifi y en torres de telefonía celular. Para hacer suo de esta API seguiremos los pasos:
+* en este enlace encontraremos información detallada del api de google maps de geolocalizacion basada en redes wifi y en torres de telefonía celular. Para hacer uso de esta API seguiremos los pasos:
 
-crear cuenta
+### crear cuenta
+* crearemos una cuenta de google cloud
 * https://console.cloud.google.com/home/dashboard
-crearemos una cuenta de google cloud
-* crear proyecto
-crearemos un proyecto nuevo
-<foto>
 
-* habilitar billing  https://console.cloud.google.com/billing
+### crear proyecto
+* crearemos un proyecto nuevo
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/crear_proyecto.png.jpg" width="400">
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/dashboard.png" width="400">
+
+### habilitar billing  https://console.cloud.google.com/billing
 debemos habilitar la facturacion obligatoriamente para usar esa api. Necesitamos ingresar datos de una tarjeta de credito activa y obtendremos unos dias gratis suficientes para realizar pruebas.
-<foto>
-* habilitar el geolocation api. https://console.cloud.google.com/apis/library/geolocation.googleapis.com 
-buscamos la api de geolocalizacion y la habilitamos en nuestro proyecto.
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/facturacion.png" width="400">
+  
+### habilitar el geolocation api. https://console.cloud.google.com/apis/library/geolocation.googleapis.com 
+* buscamos la api de geolocalizacion y la habilitamos en nuestro proyecto.
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/geolocationAPI.png" width="400">
 
-* Finalmente obtener el KEY https://console.cloud.google.com/apis/credentials 
-ahora solo nos falta obtener una key para poder usar el api. Copiamos la clave y la usaremos para resolver las coordenaas.
+### Finalmente obtener el KEY
+* ahora solo nos falta obtener una key para poder usar el api. Copiamos la clave y la usaremos para resolver las coordenaas.
+* https://console.cloud.google.com/apis/credentials
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/credenciales.png" width="400">
+* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/credenciales_2.png" width="400">
 
-### solicitar coordenadas con curl:
+
+### solicitar coordenadas con cURL:
 * guardamos las macs en un archivo con el siguiente formato
 ```javascript
 {
