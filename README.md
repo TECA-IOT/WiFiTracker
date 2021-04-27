@@ -294,10 +294,8 @@ ahora solo nos falta obtener una key para poder usar el api. Copiamos la clave y
 * <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957248.jpg" width="400">
 * <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957241.jpg" width="400">
 * prepara un LDO de 3.3v con sus condensadores y una batería recargable
-* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957262.jpg" width="400">
 * <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957214.jpg" width="400">
 * <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957200.jpg" width="400">
-* <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957192.jpg" width="400">
 * <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957192.jpg" width="400">
 * <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/1619288957188.jpg" width="400">
 * si necesitamos reprogramarlo podemos soldar cables en tx, rx y gnd. Y mantener el pulsador presionado durante la programacion.
