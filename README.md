@@ -1,5 +1,3 @@
-<img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/portada.png" width="400">
-
 # WiFiTracker
 wifi mac google geolocalization api sigfox low power django traccar
 
@@ -317,3 +315,4 @@ debemos habilitar la facturacion obligatoriamente para usar esa api. Necesitamos
 * <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/middleware.png" width="400">
 * resultado
 * <img src="https://github.com/paulporto/WiFiTracker/blob/main/imagenes/traccar.png" width="400">
+  
